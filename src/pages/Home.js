@@ -13,16 +13,26 @@ export const Home = {
           </p>
           
           <div class="animate-fade-in" style="animation-delay: 0.4s; opacity: 0;">
-            <a id="download-btn" href="https://github.com/italofvm/lumen-reader/releases" target="_blank" class="btn-primary">
+            <a id="download-button" href="#" class="btn-primary">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12 16L12 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M9 13L12 16L15 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M17 21H7C5.89543 21 5 20.1046 5 19V5C5 3.89543 5.89543 3 7 3H12.5L19 9.5V19C19 20.1046 18.1046 21 17 21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
-              <span>Baixar Versão Recente</span>
+              <span>Baixar APK</span>
             </a>
-            <div style="margin-top: 15px; font-size: 0.85rem; color: rgba(255,255,255,0.4);">
-              Disponível para Windows, macOS e Linux
+            
+            <div style="margin-top: 25px; display: flex; flex-direction: column; gap: 10px; align-items: center; background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); max-width: 400px; margin-left: auto; margin-right: auto;">
+              <div style="display: flex; gap: 20px; font-size: 0.9rem; color: var(--text-muted);">
+                <span>Versão: <b id="app-version" style="color: #fff;">Carregando...</b></span>
+                <span>Lançamento: <b id="release-date" style="color: #fff;">Carregando...</b></span>
+              </div>
+              <div style="text-align: left; width: 100%;">
+                <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Novidades:</p>
+                <ul id="changelog" style="font-size: 0.85rem; color: rgba(255,255,255,0.7); margin: 0; padding-left: 20px;">
+                  <li>Carregando...</li>
+                </ul>
+              </div>
             </div>
           </div>
   
@@ -45,31 +55,13 @@ export const Home = {
       </section>
     `,
     afterRender: async () => {
-      const btn = document.getElementById('download-btn');
-      const btnText = btn.querySelector('span');
-      
-      try {
-        btnText.innerText = "Buscando versão...";
-        const response = await fetch('https://api.github.com/repos/italofvm/lumen-reader/releases/latest');
-        if (!response.ok) throw new Error('Falha na requisição');
-        
-        const data = await response.json();
-        
-        // Find best asset (exe, dmg, or first available)
-        // const asset = data.assets.find(a => a.name.endsWith('.exe') || a.name.endsWith('.dmg') || a.name.endsWith('.AppImage')) || data.assets[0];
-        // Requirement: "primeiro asset encontrado (ou o link da release)"
-        
-        const downloadUrl = (data.assets && data.assets.length > 0) 
-            ? data.assets[0].browser_download_url 
-            : data.html_url;
-            
-        btn.href = downloadUrl;
-        btnText.innerText = `Baixar ${data.tag_name}`;
-        
-      } catch (error) {
-        console.error("Erro ao buscar release:", error);
-        btnText.innerText = "Baixar no GitHub";
-        // href remains the generic releases page
+      // Re-run the update checker in case the elements were added after DOMContentLoaded
+      if (window.UpdateChecker) {
+        const checker = new window.UpdateChecker();
+        await checker.updatePageElements();
+      } else {
+        // If not global yet (rare in this setup), we can just wait a bit or try to use the one from index.html if it's there
+        console.warn("UpdateChecker not found in window");
       }
     }
   };
