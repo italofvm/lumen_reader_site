@@ -1,7 +1,7 @@
 {
   "versionCode": 10,
   "versionName": "1.2.8",
-  "downloadUrl": "https://github.com/italofvm/lumen-reader/releases/download/v1.2.8/lumen-reader.apk",
+  "downloadUrl": "/api/download?tag=v1.2.8&asset=app-release.apk",
   "releaseDate": "2026-01-14",
   "changelog": [
     "Ajustes de desempenho gerais",
