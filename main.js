@@ -23,6 +23,32 @@ document.querySelector('#app').innerHTML = `
   ${Footer()}
 `;
 
+const navToggle = document.querySelector('[data-nav-toggle]');
+const navLinks = document.querySelector('[data-nav-links]');
+
+if (navToggle && navLinks) {
+  const closeMenu = () => {
+    navLinks.classList.remove('is-open');
+    navToggle.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('nav-open');
+  };
+
+  navToggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('is-open');
+    navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    document.body.classList.toggle('nav-open', isOpen);
+  });
+
+  navLinks.addEventListener('click', (e) => {
+    const link = e.target.closest('a');
+    if (link) closeMenu();
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) closeMenu();
+  });
+}
+
 // Start Router
 const router = new Router(routes);
 
