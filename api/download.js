@@ -43,6 +43,10 @@ export default async function handler(req, res) {
     res.end(
       JSON.stringify({
         error: 'Failed to fetch release from GitHub',
+        owner,
+        repo,
+        tag,
+        asset: assetName,
         status: releaseRes.status,
         details: text
       })
