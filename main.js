@@ -5,13 +5,17 @@ import { Footer } from './src/components/Footer.js';
 import { Home } from './src/pages/Home.js';
 import { Privacy } from './src/pages/Privacy.js';
 import { Terms } from './src/pages/Terms.js';
+import { Donate } from './src/pages/Donate.js';
 
 // Define Routes
 const routes = [
   { path: '/', view: Home.view, afterRender: Home.afterRender },
   { path: '/privacy', view: Privacy.view },
-  { path: '/terms', view: Terms.view }
+  { path: '/terms', view: Terms.view },
+  { path: '/donate', view: Donate.view, afterRender: Donate.afterRender }
 ];
+
+
 
 // Initialize Helper Components
 // We inject Nav and Footer separately to avoid re-rendering them constantly if we wanted, 

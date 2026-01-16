@@ -138,6 +138,29 @@ export const Home = {
         let current = 0;
         let timer = null;
 
+        // Touch handling for mobile swipe
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        const handleGesture = () => {
+          const threshold = 50;
+          if (touchEndX < touchStartX - threshold) go(1); // Swipe left
+          if (touchEndX > touchStartX + threshold) go(-1); // Swipe right
+          restart();
+        };
+
+        const viewport = carousel.querySelector('.home-carousel__viewport');
+        if (viewport) {
+          viewport.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+          }, { passive: true });
+
+          viewport.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleGesture();
+          }, { passive: true });
+        }
+
         const renderDots = () => {
           if (!dots) return;
           dots.innerHTML = screenshots

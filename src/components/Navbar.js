@@ -17,7 +17,9 @@ export const Navbar = () => {
           <a href="/" data-link class="nav__link">Home</a>
           <a href="/privacy" data-link class="nav__link">Privacidade</a>
           <a href="/terms" data-link class="nav__link">Termos</a>
+          <a href="/donate" data-link class="nav__link" style="color: var(--accent-blue); font-weight: 600;">Apoiar</a>
         </div>
+
       </nav>
     `;
   };

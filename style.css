@@ -363,6 +363,17 @@ a {
   right: 10px;
  }
 
+ @media (max-width: 768px) {
+  .home-carousel__btn {
+    display: none;
+  }
+  .home-carousel__viewport {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+ }
+
+
  .home-carousel__dots {
   display: flex;
   justify-content: center;

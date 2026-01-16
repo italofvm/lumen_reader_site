@@ -9,7 +9,9 @@ export const Footer = () => {
              <a href="https://github.com/italofvm/lumen-reader" target="_blank" style="color: var(--text-muted); font-size: 0.9rem;">GitHub</a>
              <a href="/privacy" data-link style="color: var(--text-muted); font-size: 0.9rem;">Política de Privacidade</a>
              <a href="/terms" data-link style="color: var(--text-muted); font-size: 0.9rem;">Termos de Uso</a>
+             <a href="/donate" data-link style="color: var(--accent-blue); font-size: 0.9rem; font-weight: 600;">Apoiar Projeto</a>
           </div>
+
         </div>
       </footer>
 
