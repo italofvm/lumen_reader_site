@@ -8,8 +8,10 @@ export const Footer = () => {
           <div style="margin-top: 15px; display: flex; justify-content: center; gap: 20px;">
              <a href="https://github.com/italofvm/lumen-reader" target="_blank" style="color: var(--text-muted); font-size: 0.9rem;">GitHub</a>
              <a href="/privacy" data-link style="color: var(--text-muted); font-size: 0.9rem;">Política de Privacidade</a>
+             <a href="/terms" data-link style="color: var(--text-muted); font-size: 0.9rem;">Termos de Uso</a>
           </div>
         </div>
       </footer>
+
     `;
   };
