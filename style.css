@@ -321,18 +321,19 @@ a {
   border-radius: 14px;
   border: 1px solid var(--glass-border);
   background: rgba(255, 255, 255, 0.03);
+  aspect-ratio: 9 / 19.5;
  }
 
  .home-carousel__img {
   width: 100%;
   height: auto;
   display: block;
-  aspect-ratio: 9 / 16;
+  aspect-ratio: 9 / 19.5;
   object-fit: cover;
  }
 
  .home-carousel__fallback {
-  aspect-ratio: 9 / 16;
+  aspect-ratio: 9 / 19.5;
   display: flex;
   align-items: center;
   justify-content: center;

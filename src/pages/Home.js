@@ -1,5 +1,6 @@
 export const Home = {
     view: () => `
+      <main>
       <section class="home-hero">
         <div class="home-glow home-glow--primary"></div>
         <div class="home-glow home-glow--secondary"></div>
@@ -12,7 +13,7 @@ export const Home = {
             </p>
 
             <div class="home-cta animate-fade-in" style="animation-delay: 0.35s; opacity: 0;">
-              <a id="download-button" href="#" class="btn-primary">
+              <a id="download-button" href="#" class="btn-primary" aria-label="Baixar aplicativo">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M12 16L12 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                   <path d="M9 13L12 16L15 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -21,7 +22,7 @@ export const Home = {
                 <span>Baixar APK</span>
               </a>
 
-              <div class="home-meta glass-panel">
+              <div class="home-meta glass-panel" style="min-height: 140px;">
                 <div class="home-meta__top">
                   <span>Versão: <b id="app-version">Carregando...</b></span>
                   <span>Lançamento: <b id="release-date">Carregando...</b></span>
@@ -52,7 +53,7 @@ export const Home = {
                   <button class="home-carousel__btn home-carousel__btn--next" type="button" aria-label="Próximo">›</button>
 
                   <div class="home-carousel__viewport">
-                    <img class="home-carousel__img" data-screenshot-img alt="Screenshot do app" loading="lazy" />
+                    <img class="home-carousel__img" data-screenshot-img alt="Screenshot do Lumen Reader" loading="eager" fetchpriority="high" width="320" height="680" />
                     <div class="home-carousel__fallback" data-screenshot-fallback>Adicione as imagens em <b>public/screenshots</b></div>
                   </div>
 
@@ -65,6 +66,7 @@ export const Home = {
       </section>
 
       <section class="home-section">
+
         <div class="container">
           <div class="home-section__header">
             <h2 class="home-section__title">Feito para ler melhor</h2>
@@ -89,7 +91,9 @@ export const Home = {
         </div>
       </section>
 
+      </main>
     `,
+
     afterRender: async () => {
       // Re-run the update checker in case the elements were added after DOMContentLoaded
       if (window.UpdateChecker) {

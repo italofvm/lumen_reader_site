@@ -46,15 +46,88 @@
     <!-- Performance Hints -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
     <link rel="dns-prefetch" href="https://api.github.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Lumen Reader",
+        "operatingSystem": "Android, iOS",
+        "applicationCategory": "ReadingApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "description": "Lumen Reader: O leitor de ebooks e documentos definitivo focado em performance, privacidade e design premium para Android e iOS."
+      }
+    </script>
   </head>
-  <body>
-    <div id="app"></div>
+  <body style="margin: 0; background-color: #050507">
+    <div id="app">
+      <!-- App Shell / Skeleton -->
+      <nav
+        class="nav"
+        style="
+          position: fixed;
+          top: 20px;
+          width: calc(100% - 40px);
+          left: 20px;
+          height: 70px;
+          background: rgba(255, 255, 255, 0.03);
+          backdrop-filter: blur(10px);
+          border-radius: 16px;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          z-index: 1000;
+        "
+      ></nav>
+      <section
+        style="
+          height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          padding: 0 20px;
+        "
+      >
+        <div
+          style="
+            width: 200px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            margin-bottom: 20px;
+          "
+        ></div>
+        <div
+          style="
+            width: 300px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            margin-bottom: 20px;
+          "
+        ></div>
+        <div
+          style="
+            width: 150px;
+            height: 50px;
+            background: linear-gradient(135deg, #6e48aa 0%, #9d50bb 100%);
+            border-radius: 30px;
+            opacity: 0.3;
+          "
+        ></div>
+      </section>
+    </div>
     <script type="module" src="/main.js"></script>
-    <script src="/update-checker.js"></script>
+    <script src="/update-checker.js" defer></script>
   </body>
 </html>
