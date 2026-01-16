@@ -73,18 +73,19 @@ export const Home = {
 
           <div class="home-features">
             <div class="glass-panel home-feature">
-              <h3 class="home-feature__title" style="color: var(--accent-blue);">Leve & Rápido</h3>
+              <h2 class="home-feature__title" style="color: var(--accent-blue); font-size: 1.5rem;">Leve & Rápido</h2>
               <p class="home-feature__text">Abre rápido e roda fluido, mesmo em aparelhos modestos.</p>
             </div>
             <div class="glass-panel home-feature">
-              <h3 class="home-feature__title" style="color: var(--accent-violet);">Privacidade primeiro</h3>
+              <h2 class="home-feature__title" style="color: var(--accent-violet); font-size: 1.5rem;">Privacidade primeiro</h2>
               <p class="home-feature__text">Seus documentos ficam no seu dispositivo. Sem telemetria invasiva.</p>
             </div>
             <div class="glass-panel home-feature">
-              <h3 class="home-feature__title">Design fluido</h3>
+              <h2 class="home-feature__title" style="font-size: 1.5rem;">Design fluido</h2>
               <p class="home-feature__text">Interface minimalista que se adapta ao seu fluxo de leitura.</p>
             </div>
           </div>
+
         </div>
       </section>
 

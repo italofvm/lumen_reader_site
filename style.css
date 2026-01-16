@@ -129,7 +129,10 @@ a {
   border: 1px solid var(--glass-border);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   border-radius: 16px;
+  will-change: transform, opacity;
+  content-visibility: auto;
 }
+
 
 .btn-primary {
   background: linear-gradient(135deg, var(--accent-violet) 0%, var(--accent-blue) 100%);
