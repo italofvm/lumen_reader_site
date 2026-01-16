@@ -22,7 +22,8 @@ export const Home = {
                 <span>Baixar APK</span>
               </a>
 
-              <div class="home-meta glass-panel" style="min-height: 140px;">
+              <div class="home-meta glass-panel" style="min-height: 140px; width: 100%;">
+
                 <div class="home-meta__top">
                   <span>Versão: <b id="app-version">Carregando...</b></span>
                   <span>Lançamento: <b id="release-date">Carregando...</b></span>
