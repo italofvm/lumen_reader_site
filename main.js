@@ -27,6 +27,7 @@ document.querySelector('#app').innerHTML = `
   ${Footer()}
 `;
 
+// Initialize menu toggle logic immediately after HTML injection
 const navToggle = document.querySelector('[data-nav-toggle]');
 const navLinks = document.querySelector('[data-nav-links]');
 
