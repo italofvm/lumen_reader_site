@@ -1,22 +1,13 @@
 {
   "versionCode": 1,
   "versionName": "1.2.9",
-  "downloadUrl": "/api/download?tag=1.2.9%2B3&asset=lumen-reader_v1.2.9%2B3.apk",
+  "downloadUrl": "/api/download?tag=1.2.9%2B13&asset=lumen-reader_v1.2.9%2B13.apk",
   "releaseDate": "2026-01-19",
-  "changelog": {
-    "pt-BR": [
+  "changelog": [
       "🎨 5 Novos temas de leitura: Sépia, Soft Mint, Cloudy Day, Midnight e Nordic",
       "🔤 Pré-visualização de fontes em tempo real nas configurações",
       "📚 Seleção de fontes categorizadas (Serifa, Sans, Leitura)",
       "📄 Melhoria no leitor de PDF: Páginas sempre centralizadas no zoom",
       "✨ Interface mais refinada e opções de acessibilidade visual"
-    ],
-    "en": [
-      "🎨 5 New reading themes: Sepia, Soft Mint, Cloudy Day, Midnight and Nordic",
-      "🔤 Real-time font preview in settings",
-      "📚 Categorized font selection (Serif, Sans, Reading)",
-      "📄 Improved PDF reader: Pages always centered when zooming",
-      "✨ More refined interface and visual accessibility options"
     ]
-  }
 }
