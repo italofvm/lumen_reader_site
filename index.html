@@ -2,7 +2,17 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/jpeg" href="/logo.jpg" />
+    <script>
+      window.onerror = function (msg, url, lineNo, columnNo, error) {
+        console.error("Lumen Global Error:", msg, url, lineNo, columnNo, error);
+        // Only show alert in development or if critical
+        if (msg.includes("module") || msg.includes("import")) {
+          alert("Erro crítico ao carregar a aplicação: " + msg);
+        }
+        return false;
+      };
+    </script>
+    <link rel="icon" type="image/webp" href="/logo.webp" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#050507" />
     <meta
@@ -22,17 +32,20 @@
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://lumenreader.com/" />
+    <meta property="og:url" content="https://lumenreader.vercel.app/" />
     <meta property="og:title" content="Lumen Reader - Sua leitura, iluminada" />
     <meta
       property="og:description"
       content="O leitor de ebooks focado em performance e privacidade com design Glassmorphism."
     />
-    <meta property="og:image" content="https://lumenreader.com/logo.jpg" />
+    <meta
+      property="og:image"
+      content="https://lumenreader.vercel.app/logo.webp"
+    />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://lumenreader.com/" />
+    <meta property="twitter:url" content="https://lumenreader.vercel.app/" />
     <meta
       property="twitter:title"
       content="Lumen Reader - Sua leitura, iluminada"
@@ -41,7 +54,10 @@
       property="twitter:description"
       content="O leitor de ebooks focado em performance e privacidade com design Glassmorphism."
     />
-    <meta property="twitter:image" content="https://lumenreader.com/logo.jpg" />
+    <meta
+      property="twitter:image"
+      content="https://lumenreader.vercel.app/logo.webp"
+    />
 
     <!-- Performance Hints -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -52,6 +68,7 @@
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="/style.css" />
 
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">

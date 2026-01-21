@@ -107,11 +107,10 @@ export const Home = {
 
       const screenshots = [
         { label: 'Leitura', base: '/screenshots/01' },
-        { label: 'Assistente IA', base: '/screenshots/02' },
-        { label: 'Resumo', base: '/screenshots/03' },
-        { label: 'Biblioteca', base: '/screenshots/04' },
-        { label: 'Configurações', base: '/screenshots/05' },
-        { label: 'Aparência', base: '/screenshots/06' }
+        { label: 'Biblioteca', base: '/screenshots/02' },
+        { label: 'Detalhes', base: '/screenshots/03' },
+        { label: 'Hábitos', base: '/screenshots/04' },
+        { label: 'Arquivos', base: '/screenshots/05' }
       ];
 
       const extensions = ['webp', 'png', 'jpg', 'jpeg'];

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://lumenreader.com/sitemap.xml
+Sitemap: https://lumenreader.vercel.app/sitemap.xml

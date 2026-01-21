@@ -1,4 +1,3 @@
-import './style.css';
 import Router from './src/router.js';
 import { Navbar } from './src/components/Navbar.js';
 import { Footer } from './src/components/Footer.js';
