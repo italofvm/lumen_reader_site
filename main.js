@@ -8,10 +8,44 @@ import { Donate } from './src/pages/Donate.js';
 
 // Define Routes
 const routes = [
-  { path: '/', view: Home.view, afterRender: Home.afterRender },
-  { path: '/privacy', view: Privacy.view },
-  { path: '/terms', view: Terms.view },
-  { path: '/donate', view: Donate.view, afterRender: Donate.afterRender }
+  { 
+    path: '/', 
+    view: Home.view, 
+    afterRender: Home.afterRender,
+    meta: {
+      title: 'Lumen Reader - Sua leitura, iluminada',
+      description: 'Lumen Reader: O leitor de ebooks e documentos definitivo focado em performance, privacidade e design premium para Android e iOS.',
+      canonical: 'https://lumenreader.vercel.app/'
+    }
+  },
+  { 
+    path: '/privacy', 
+    view: Privacy.view,
+    meta: {
+      title: 'Política de Privacidade - Lumen Reader',
+      description: 'Política de Privacidade do Lumen Reader. Saiba como tratamos seus dados e nossa integração segura com o Google Drive.',
+      canonical: 'https://lumenreader.vercel.app/privacy'
+    }
+  },
+  { 
+    path: '/terms', 
+    view: Terms.view,
+    meta: {
+      title: 'Termos de Serviço - Lumen Reader',
+      description: 'Termos de Serviço do Lumen Reader. Condições de uso, responsabilidades e informações legais sobre o aplicativo.',
+      canonical: 'https://lumenreader.vercel.app/terms'
+    }
+  },
+  { 
+    path: '/donate', 
+    view: Donate.view, 
+    afterRender: Donate.afterRender,
+    meta: {
+      title: 'Apoie o Lumen Reader',
+      description: 'Ajude a manter o Lumen Reader livre de anúncios e focado em privacidade apoiando o desenvolvimento do projeto.',
+      canonical: 'https://lumenreader.vercel.app/donate'
+    }
+  }
 ];
 
 // Initialize app structure

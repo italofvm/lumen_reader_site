@@ -42,6 +42,34 @@ export default class Router {
     const appContent = document.getElementById('page-content');
     if (appContent) {
         appContent.innerHTML = content;
+        
+        // Update SEO Metadata
+        if (match.meta) {
+          // Title
+          if (match.meta.title) {
+            document.title = match.meta.title;
+          }
+
+          // Description
+          if (match.meta.description) {
+            const metaDesc = document.querySelector('meta[name="description"]');
+            if (metaDesc) {
+              metaDesc.setAttribute('content', match.meta.description);
+            }
+          }
+
+          // Canonical
+          if (match.meta.canonical) {
+            let linkCanonical = document.querySelector('link[rel="canonical"]');
+            if (!linkCanonical) {
+              linkCanonical = document.createElement('link');
+              linkCanonical.setAttribute('rel', 'canonical');
+              document.head.appendChild(linkCanonical);
+            }
+            linkCanonical.setAttribute('href', match.meta.canonical);
+          }
+        }
+
         // Re-attach scripts or event listeners if needed (like the download button)
         if (match.afterRender) match.afterRender();
     }
