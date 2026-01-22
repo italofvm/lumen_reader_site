@@ -73,10 +73,12 @@ class UpdateChecker {
 window.UpdateChecker = UpdateChecker;
 
 // Inicialização automática quando o DOM estiver pronto
-document.addEventListener('DOMContentLoaded', async () => {
-  const checker = new UpdateChecker();
-  await checker.updatePageElements();
-});
+// Inicialização foi removida para evitar conflito com a lógica da SPA (Ver: src/pages/Home.js)
+// Caso precise em página estáticas, verifique se não há duplicidade.
+// document.addEventListener('DOMContentLoaded', async () => {
+//   const checker = new UpdateChecker();
+//   await checker.updatePageElements();
+// });
 
 // Exportar para uso em outros scripts se necessário
 if (typeof module !== 'undefined' && module.exports) {

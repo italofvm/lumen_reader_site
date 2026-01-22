@@ -54,7 +54,7 @@ export const Home = {
                   <button class="home-carousel__btn home-carousel__btn--next" type="button" aria-label="Próximo">›</button>
 
                   <div class="home-carousel__viewport">
-                    <img class="home-carousel__img" data-screenshot-img alt="Screenshot do Lumen Reader" loading="eager" fetchpriority="high" width="320" height="680" />
+                    <img src="/screenshots/01.webp" class="home-carousel__img" data-screenshot-img alt="Screenshot do Lumen Reader" loading="eager" fetchpriority="high" width="320" height="680" />
                     <div class="home-carousel__fallback" data-screenshot-fallback>Adicione as imagens em <b>public/screenshots</b></div>
                   </div>
 
@@ -96,131 +96,31 @@ export const Home = {
     `,
 
     afterRender: async () => {
-      // Re-run the update checker in case the elements were added after DOMContentLoaded
+      // Re-run the update checker
       if (window.UpdateChecker) {
         const checker = new window.UpdateChecker();
         await checker.updatePageElements();
       } else {
-        // If not global yet (rare in this setup), we can just wait a bit or try to use the one from index.html if it's there
         console.warn("UpdateChecker not found in window");
       }
 
+      // Initialize Carousel
       const screenshots = [
-        { label: 'Leitura', base: '/screenshots/01' },
-        { label: 'Biblioteca', base: '/screenshots/02' },
-        { label: 'Detalhes', base: '/screenshots/03' },
-        { label: 'Hábitos', base: '/screenshots/04' },
-        { label: 'Arquivos', base: '/screenshots/05' }
+        { label: 'Leitura', src: '/screenshots/01.webp' },
+        { label: 'Biblioteca', src: '/screenshots/02.webp' },
+        { label: 'Detalhes', src: '/screenshots/03.webp' },
+        { label: 'Hábitos', src: '/screenshots/04.webp' },
+        { label: 'Arquivos', src: '/screenshots/05.webp' }
       ];
 
-      const extensions = ['webp', 'png', 'jpg', 'jpeg'];
-      const resolveImageSrc = async (base) => {
-        const probe = (src) =>
-          new Promise((resolve) => {
-            const img = new Image();
-            img.onload = () => resolve(true);
-            img.onerror = () => resolve(false);
-            img.src = src;
-          });
-
-        for (const ext of extensions) {
-          const src = `${base}.${ext}`;
-          const ok = await probe(src);
-          if (ok) return src;
-        }
-
-        return null;
-      };
-
-      const carousel = document.querySelector('[data-screenshots]');
-      if (carousel) {
-        const img = carousel.querySelector('[data-screenshot-img]');
-        const fallback = carousel.querySelector('[data-screenshot-fallback]');
-        const dots = carousel.querySelector('[data-screenshot-dots]');
-        const prev = carousel.querySelector('.home-carousel__btn--prev');
-        const next = carousel.querySelector('.home-carousel__btn--next');
-
-        let current = 0;
-        let timer = null;
-
-        // Touch handling for mobile swipe
-        let touchStartX = 0;
-        let touchEndX = 0;
-
-        const handleGesture = () => {
-          const threshold = 50;
-          if (touchEndX < touchStartX - threshold) go(1); // Swipe left
-          if (touchEndX > touchStartX + threshold) go(-1); // Swipe right
-          restart();
-        };
-
-        const viewport = carousel.querySelector('.home-carousel__viewport');
-        if (viewport) {
-          viewport.addEventListener('touchstart', e => {
-            touchStartX = e.changedTouches[0].screenX;
-          }, { passive: true });
-
-          viewport.addEventListener('touchend', e => {
-            touchEndX = e.changedTouches[0].screenX;
-            handleGesture();
-          }, { passive: true });
-        }
-
-        const renderDots = () => {
-          if (!dots) return;
-          dots.innerHTML = screenshots
-            .map((_, i) => `<button type="button" class="home-carousel__dot${i === current ? ' is-active' : ''}" data-dot-index="${i}" aria-label="Ir para ${i + 1}"></button>`)
-            .join('');
-
-          dots.querySelectorAll('[data-dot-index]').forEach((btn) => {
-            btn.addEventListener('click', () => {
-              const idx = Number(btn.getAttribute('data-dot-index'));
-              if (!Number.isNaN(idx)) {
-                current = idx;
-                void showCurrent();
-                restart();
-              }
-            });
-          });
-        };
-
-        const showCurrent = async () => {
-          if (!img) return;
-          const src = await resolveImageSrc(screenshots[current].base);
-          if (src) {
-            img.src = src;
-            img.style.display = '';
-            if (fallback) fallback.style.display = 'none';
-          } else {
-            img.removeAttribute('src');
-            img.style.display = 'none';
-            if (fallback) fallback.style.display = '';
-          }
-          renderDots();
-        };
-
-        const go = (dir) => {
-          current = (current + dir + screenshots.length) % screenshots.length;
-          void showCurrent();
-        };
-
-        const restart = () => {
-          if (timer) window.clearInterval(timer);
-          timer = window.setInterval(() => go(1), 4500);
-        };
-
-        prev?.addEventListener('click', () => {
-          go(-1);
-          restart();
-        });
-
-        next?.addEventListener('click', () => {
-          go(1);
-          restart();
-        });
-
-        await showCurrent();
-        restart();
+      const carouselEl = document.querySelector('[data-screenshots]');
+      if (carouselEl) {
+        // Dynamic import to keep initial bundle small or standard import if preferred. 
+        // Using standard import at top is better, but since this is an object literal export, 
+        // we can import at top of file. 
+        // For now, let's assume we need to import it.
+        const { CarouselController } = await import('../components/CarouselController.js');
+        new CarouselController(carouselEl, screenshots).mount();
       }
     }
   };

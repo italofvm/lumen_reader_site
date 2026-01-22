@@ -35,6 +35,7 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://lumenreader.vercel.app/" />
     <meta property="og:title" content="Lumen Reader - Sua leitura, iluminada" />
+    <meta property="og:site_name" content="Lumen Reader" />
     <meta
       property="og:description"
       content="O leitor de ebooks focado em performance e privacidade com design Glassmorphism."
@@ -60,6 +61,14 @@
       content="https://lumenreader.vercel.app/logo.webp"
     />
 
+    <!-- Preload LCP Image -->
+    <link
+      rel="preload"
+      as="image"
+      href="/screenshots/01.webp"
+      type="image/webp"
+    />
+
     <!-- Performance Hints -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -71,7 +80,18 @@
     />
     <link rel="stylesheet" href="/style.css" />
 
-    <!-- Structured Data (JSON-LD) -->
+    <!-- Structured Data (JSON-LD) Site Identity -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Lumen Reader",
+        "alternateName": ["LumenReader", "Lumen App"],
+        "url": "https://lumenreader.vercel.app/"
+      }
+    </script>
+
+    <!-- Structured Data (JSON-LD) Software App -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
