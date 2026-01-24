@@ -1,18 +1,27 @@
 export const Footer = () => {
     return `
-      <footer style="margin-top: auto; padding: 40px 0; text-align: center; border-top: 1px solid var(--glass-border); background: var(--glass-bg); backdrop-filter: blur(10px);">
+      <footer style="margin-top: auto; padding: 60px 0; background: var(--bg-surface); border-top: 1px solid var(--border-color);">
         <div class="container">
-          <p style="color: var(--text-muted); font-size: 0.9rem;">
-            &copy; ${new Date().getFullYear()} Lumen Reader. Todos os direitos reservados.
-          </p>
-          <div style="margin-top: 15px; display: flex; justify-content: center; gap: 20px;">
-             <a href="/privacy" data-link style="color: var(--text-muted); font-size: 0.9rem;">Política de Privacidade</a>
-             <a href="/terms" data-link style="color: var(--text-muted); font-size: 0.9rem;">Termos de Uso</a>
-             <a href="/donate" data-link style="color: var(--accent-blue); font-size: 0.9rem; font-weight: 600;">Apoiar Projeto</a>
-          </div>
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 24px;">
+            
+            <p style="text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.1em; color: var(--text-muted);">
+              &copy; ${new Date().getFullYear()} Lumen Reader. Code is Law.
+            </p>
 
+            <div style="display: flex; gap: 32px;">
+               <a href="/privacy" data-link class="nav__link" style="font-size: 0.8rem;">Privacidade</a>
+               <a href="/terms" data-link class="nav__link" style="font-size: 0.8rem;">Termos</a>
+               <a href="/donate" data-link class="nav__link" style="font-size: 0.8rem; color: var(--accent) !important;">Apoiar</a>
+            </div>
+
+            <div style="width: 40px; height: 1px; background: var(--border-color); margin-top: 20px;"></div>
+             
+             <p style="font-size: 0.75rem; color: var(--text-muted); max-width: 400px; text-align: center;">
+               Mantido pela comunidade. Construído para durar.
+             </p>
+
+          </div>
         </div>
       </footer>
-
     `;
   };

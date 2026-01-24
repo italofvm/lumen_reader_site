@@ -1,107 +1,118 @@
 export const Home = {
     view: () => `
       <main>
-      <section class="home-hero">
-        <div class="home-glow home-glow--primary"></div>
-        <div class="home-glow home-glow--secondary"></div>
+        <section class="home-hero">
+          <div class="container">
+            <!-- MASSIVE TYPOGRAPHY -->
+            <div class="hero-layer hero-title-wrapper">
+              <h1 class="text-massive animate-fade-in">LUMEN</h1>
+            </div>
 
-        <div class="container home-hero__grid">
-          <div class="home-hero__copy">
-            <h1 class="home-title animate-fade-in">Sua leitura, iluminada.</h1>
-            <p class="home-subtitle animate-fade-in" style="animation-delay: 0.2s; opacity: 0;">
-              Lumen Reader é o leitor de ebooks e documentos definitivo, projetado para performance, privacidade e uma experiência visual imersiva.
-            </p>
+            <!-- OVERLAPPING CONTENT -->
+            <div class="hero-layer hero-content-wrapper fade-in" style="animation-delay: 0.2s;">
+              
+              <!-- LEFT: Action & Meta -->
+              <div class="hero-actions">
+                <p class="text-subtitle" style="margin-bottom: 32px; color: var(--text-main); font-size: 1.5rem; text-transform: uppercase; font-weight: 700;">
+                  Leitura Iluminada. <span style="color: var(--accent);">//</span>
+                </p>
+                <p class="text-subtitle" style="margin-bottom: 40px; border-left: 2px solid var(--accent); padding-left: 20px;">
+                  Performance extrema, privacidade total e design focado para Android e iOS.
+                </p>
 
-            <div class="home-cta animate-fade-in" style="animation-delay: 0.35s; opacity: 0;">
-              <a id="download-button" href="#" class="btn-primary" aria-label="Baixar aplicativo">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 16L12 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M9 13L12 16L15 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M17 21H7C5.89543 21 5 20.1046 5 19V5C5 3.89543 5.89543 3 7 3H12.5L19 9.5V19C19 20.1046 18.1046 21 17 21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                <span>Baixar APK</span>
-              </a>
-
-              <div class="home-meta glass-panel" style="min-height: 140px; width: 100%;">
-
-                <div class="home-meta__top">
-                  <span>Versão: <b id="app-version">Carregando...</b></span>
-                  <span>Lançamento: <b id="release-date">Carregando...</b></span>
+                <div style="display: flex; gap: 16px; margin-bottom: 48px; flex-wrap: wrap;">
+                  <a id="download-button" href="#" class="btn-primary" aria-label="Baixar aplicativo">
+                     <span>BAIXAR APK</span>
+                     <span>↓</span>
+                  </a>
+                  <a href="#features" class="btn-secondary">
+                    Sobre o App
+                  </a>
                 </div>
-                <div class="home-meta__body">
-                  <p class="home-meta__label">Novidades:</p>
-                  <ul id="changelog" class="home-meta__list">
-                    <li>Carregando...</li>
+
+                <!-- Technical Meta Box -->
+                <div class="meta-box">
+                  <div class="meta-code">
+                    <span>STATUS: </span><b style="color: #00ff00;">STABLE</b><br>
+                    <span>VERSION: </span><b id="app-version">LOADING...</b><br>
+                    <span>BUILD_DATE: </span><b id="release-date">...</b>
+                  </div>
+                  <ul id="changelog" class="meta-code meta-list">
+                    <li>Fetching latest manifest...</li>
                   </ul>
                 </div>
               </div>
-            </div>
-          </div>
 
-          <div class="home-hero__media">
-            <div class="home-device glass-panel">
-              <div class="home-device__header">
-                <span class="home-device__dot"></span>
-                <span class="home-device__dot"></span>
-                <span class="home-device__dot"></span>
-              </div>
-              <div class="home-device__content">
-                <p class="home-device__title">Screenshots do app</p>
-                <p class="home-device__hint">Navegue pelas telas principais do app.</p>
-
-                <div class="home-carousel" data-screenshots>
-                  <button class="home-carousel__btn home-carousel__btn--prev" type="button" aria-label="Anterior">‹</button>
-                  <button class="home-carousel__btn home-carousel__btn--next" type="button" aria-label="Próximo">›</button>
-
-                  <div class="home-carousel__viewport">
-                    <img src="/screenshots/01.webp" class="home-carousel__img" data-screenshot-img alt="Screenshot do Lumen Reader" loading="eager" fetchpriority="high" width="320" height="680" />
-                    <div class="home-carousel__fallback" data-screenshot-fallback>Adicione as imagens em <b>public/screenshots</b></div>
+              <!-- RIGHT: Technical Device Frame -->
+              <div class="hero-media">
+                <div class="device-frame" data-screenshots>
+                  <div class="device-header">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                  </div>
+                  
+                  <div class="carousel-viewport">
+                    <img src="/screenshots/01.webp" class="carousel-img" data-screenshot-img alt="App Interface" loading="eager" />
                   </div>
 
-                  <div class="home-carousel__dots" data-screenshot-dots></div>
+                  <!-- Navigation Logic will be attached here -->
+                  <div class="carousel-nav">
+                    <button class="carousel-btn carousel-btn-prev" aria-label="Anterior">↑</button>
+                    <button class="carousel-btn carousel-btn-next" aria-label="Próximo">↓</button>
+                  </div>
+                  
+                  <!-- Dots Container -->
+                  <div style="position: absolute; bottom: 10px; left: 0; width: 100%; display: flex; justify-content: center; gap: 6px;" data-screenshot-dots>
+                    <!-- Injected by JS -->
+                  </div>
                 </div>
               </div>
+
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section class="home-section">
+        <!-- FEATURES SECTION: Brutalist Grid -->
+        <section id="features" class="section">
+          <div class="container">
+            <header class="section-header">
+              <h2 class="section-title">ESPECIFICAÇÕES</h2>
+              <p class="text-subtitle">Arquitetura de alta performance para leitores exigentes.</p>
+            </header>
 
-        <div class="container">
-          <div class="home-section__header">
-            <h2 class="home-section__title">Feito para ler melhor</h2>
-            <p class="home-section__subtitle">Experiência limpa, rápida e com foco total na sua privacidade.</p>
+            <div class="features-grid">
+              <article class="feature-card">
+                <h3 class="feature-title"><span>01.</span> VELOCIDADE</h3>
+                <p class="feature-desc">Engine de renderização otimizada. Abre EPUBs de 50MB+ instantaneamente sem travamentos.</p>
+              </article>
+              
+              <article class="feature-card">
+                <h3 class="feature-title"><span>02.</span> PRIVACIDADE</h3>
+                <p class="feature-desc">Offline-first. Seus arquivos nunca deixam seu dispositivo. Sem tracking. Sem ads.</p>
+              </article>
+              
+              <article class="feature-card">
+                <h3 class="feature-title"><span>03.</span> FORMATOS</h3>
+                <p class="feature-desc">Suporte nativo para EPUB, PDF, TXT com parser inteligente de metadados.</p>
+              </article>
+
+              <article class="feature-card" style="background: var(--bg-surface);">
+                 <h3 class="feature-title" style="color: var(--accent);"><span>//</span> OPEN SOURCE</h3>
+                 <p class="feature-desc">Código auditável e transparente. Construído pela comunidade para a comunidade.</p>
+              </article>
+            </div>
           </div>
-
-          <div class="home-features">
-            <div class="glass-panel home-feature">
-              <h2 class="home-feature__title" style="color: var(--accent-blue); font-size: 1.5rem;">Leve & Rápido</h2>
-              <p class="home-feature__text">Abre rápido e roda fluido, mesmo em aparelhos modestos.</p>
-            </div>
-            <div class="glass-panel home-feature">
-              <h2 class="home-feature__title" style="color: var(--accent-violet); font-size: 1.5rem;">Privacidade primeiro</h2>
-              <p class="home-feature__text">Seus documentos ficam no seu dispositivo. Sem telemetria invasiva.</p>
-            </div>
-            <div class="glass-panel home-feature">
-              <h2 class="home-feature__title" style="font-size: 1.5rem;">Design fluido</h2>
-              <p class="home-feature__text">Interface minimalista que se adapta ao seu fluxo de leitura.</p>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
+        </section>
       </main>
     `,
 
     afterRender: async () => {
-      // Re-run the update checker
+      // Re-run the update checker logic
       if (window.UpdateChecker) {
         const checker = new window.UpdateChecker();
         await checker.updatePageElements();
       } else {
-        console.warn("UpdateChecker not found in window");
+        console.warn("UpdateChecker system not initialized");
       }
 
       // Initialize Carousel
@@ -115,10 +126,6 @@ export const Home = {
 
       const carouselEl = document.querySelector('[data-screenshots]');
       if (carouselEl) {
-        // Dynamic import to keep initial bundle small or standard import if preferred. 
-        // Using standard import at top is better, but since this is an object literal export, 
-        // we can import at top of file. 
-        // For now, let's assume we need to import it.
         const { CarouselController } = await import('../components/CarouselController.js');
         new CarouselController(carouselEl, screenshots).mount();
       }

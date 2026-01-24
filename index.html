@@ -5,93 +5,68 @@
     <script>
       window.onerror = function (msg, url, lineNo, columnNo, error) {
         console.error("Lumen Global Error:", msg, url, lineNo, columnNo, error);
-        // Only show alert in development or if critical
-        if (msg.includes("module") || msg.includes("import")) {
-          alert("Erro crítico ao carregar a aplicação: " + msg);
-        }
+        alert(
+          "Erro crítico ao carregar a aplicação:\n" +
+            msg +
+            "\nURL: " +
+            url +
+            "\nLinha: " +
+            lineNo,
+        );
         return false;
       };
+
+      window.addEventListener("unhandledrejection", function (event) {
+        console.error("Lumen Unhandled Rejection:", event.reason);
+        alert("Erro de Promessa não tratada:\n" + event.reason);
+      });
     </script>
-    <link rel="icon" type="image/webp" href="/logo.webp" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#050507" />
+    <meta name="theme-color" content="#050505" />
+    <!-- Verifications -->
     <meta
       name="google-site-verification"
       content="KiryV6kSu_lJniizXmm6mW1sLrORmmvrDOkK7mu_K8Q"
     />
 
-    <title>Lumen Reader - Sua leitura, iluminada</title>
+    <title>Lumen Reader - Leitura Iluminada</title>
     <meta
       name="description"
-      content="Lumen Reader: O leitor de ebooks e documentos definitivo focado em performance, privacidade e design premium para Android e iOS."
+      content="Lumen Reader: Performance extrema, privacidade total e design brutalista para leitura de ebooks e documentos."
     />
     <meta
       name="keywords"
-      content="leitor de ebooks, leitor pdf, epub reader, lumen reader, privacidade, open source reader"
+      content="leitor ebook, epub reader, pdf reader, privacidade, open source, android, ios"
     />
     <link rel="canonical" href="https://lumenreader.vercel.app/" />
 
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://lumenreader.vercel.app/" />
-    <meta property="og:title" content="Lumen Reader - Sua leitura, iluminada" />
+    <meta property="og:title" content="Lumen Reader - Leitura Iluminada" />
     <meta property="og:site_name" content="Lumen Reader" />
     <meta
       property="og:description"
-      content="O leitor de ebooks focado em performance e privacidade com design Glassmorphism."
+      content="Performance extrema e privacidade total. O leitor definitivo."
     />
     <meta
       property="og:image"
       content="https://lumenreader.vercel.app/logo.webp"
     />
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://lumenreader.vercel.app/" />
-    <meta
-      property="twitter:title"
-      content="Lumen Reader - Sua leitura, iluminada"
-    />
-    <meta
-      property="twitter:description"
-      content="O leitor de ebooks focado em performance e privacidade com design Glassmorphism."
-    />
-    <meta
-      property="twitter:image"
-      content="https://lumenreader.vercel.app/logo.webp"
-    />
-
-    <!-- Preload LCP Image -->
-    <link
-      rel="preload"
-      as="image"
-      href="/screenshots/01.webp"
-      type="image/webp"
-    />
-
-    <!-- Performance Hints -->
+    <!-- Fonts check -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-    <link rel="dns-prefetch" href="https://api.github.com" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Styles -->
+    <link rel="icon" type="image/webp" href="/logo.webp" />
     <link rel="stylesheet" href="/style.css" />
 
-    <!-- Structured Data (JSON-LD) Site Identity -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "Lumen Reader",
-        "alternateName": ["LumenReader", "Lumen App"],
-        "url": "https://lumenreader.vercel.app/"
-      }
-    </script>
-
-    <!-- Structured Data (JSON-LD) Software App -->
+    <!-- Structured Data -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -104,66 +79,55 @@
           "price": "0",
           "priceCurrency": "USD"
         },
-        "description": "Lumen Reader: O leitor de ebooks e documentos definitivo focado em performance, privacidade e design premium para Android e iOS."
+        "description": "Lumen Reader: Performance extrema e privacidade total."
       }
     </script>
   </head>
-  <body style="margin: 0; background-color: #050507">
+  <body style="margin: 0; background-color: #050505; color: #f0f0f0">
     <div id="app">
-      <!-- App Shell / Skeleton -->
+      <!-- Minimalist Loading Shell -->
       <nav
         class="nav"
         style="
           position: fixed;
-          top: 20px;
-          width: calc(100% - 40px);
-          left: 20px;
+          top: 0;
+          left: 0;
+          width: 100%;
           height: 70px;
-          background: rgba(255, 255, 255, 0.03);
-          backdrop-filter: blur(10px);
-          border-radius: 16px;
-          border: 1px solid rgba(255, 255, 255, 0.1);
+          border-bottom: 1px solid #333;
+          background: #050505;
           z-index: 1000;
         "
       ></nav>
-      <section
+      <div
         style="
           height: 100vh;
           display: flex;
           align-items: center;
           justify-content: center;
-          flex-direction: column;
-          padding: 0 20px;
         "
       >
         <div
           style="
-            width: 200px;
-            height: 20px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            margin-bottom: 20px;
-          "
-        ></div>
-        <div
-          style="
-            width: 300px;
+            width: 40px;
             height: 40px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            margin-bottom: 20px;
+            border: 2px solid #333;
+            border-top-color: #ff3300;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
           "
         ></div>
-        <div
-          style="
-            width: 150px;
-            height: 50px;
-            background: linear-gradient(135deg, #6e48aa 0%, #9d50bb 100%);
-            border-radius: 30px;
-            opacity: 0.3;
-          "
-        ></div>
-      </section>
+      </div>
+      <style>
+        @keyframes spin {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+      </style>
     </div>
     <script type="module" src="/main.js"></script>
     <script src="/update-checker.js" defer></script>

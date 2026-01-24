@@ -5,13 +5,12 @@ export class CarouselController {
     this.current = 0;
     this.timer = null;
     
-    // Elements
+    // Elements - Updated for Swiss Punk Theme
     this.img = this.root.querySelector('[data-screenshot-img]');
-    this.fallback = this.root.querySelector('[data-screenshot-fallback]');
     this.dotsContainer = this.root.querySelector('[data-screenshot-dots]');
-    this.prevBtn = this.root.querySelector('.home-carousel__btn--prev');
-    this.nextBtn = this.root.querySelector('.home-carousel__btn--next');
-    this.viewport = this.root.querySelector('.home-carousel__viewport');
+    this.prevBtn = this.root.querySelector('.carousel-btn-prev');
+    this.nextBtn = this.root.querySelector('.carousel-btn-next');
+    this.viewport = this.root.querySelector('.carousel-viewport');
 
     // Touch handling state
     this.touchStartX = 0;
@@ -81,10 +80,20 @@ export class CarouselController {
   renderDots() {
     if (!this.dotsContainer) return;
     
+    // Brutalist Square Dots
     this.dotsContainer.innerHTML = this.screenshots
       .map((_, i) => `
         <button type="button" 
-          class="home-carousel__dot${i === this.current ? ' is-active' : ''}" 
+          class="carousel-pagination-dot${i === this.current ? ' is-active' : ''}" 
+          style="
+            width: 8px; 
+            height: 8px; 
+            background: ${i === this.current ? 'var(--accent)' : 'var(--border-active)'}; 
+            border: none; 
+            padding: 0;
+            cursor: pointer;
+            transition: background 0.2s;
+          "
           data-dot-index="${i}" 
           aria-label="Ir para imagem ${i + 1}">
         </button>
@@ -95,11 +104,13 @@ export class CarouselController {
   showCurrent() {
     if (!this.img) return;
     
-    // Update Image
+    // Animation reset effect
+    this.img.style.opacity = '0.8';
+    setTimeout(() => this.img.style.opacity = '1', 100);
+
     const src = this.screenshots[this.current].src;
     this.img.src = src;
     
-    // Update Dots (simpler to just toggle class than re-render everything, but re-render is robust)
     this.renderDots(); 
   }
 
@@ -110,7 +121,7 @@ export class CarouselController {
 
   startAutoPlay() {
     if (this.timer) window.clearInterval(this.timer);
-    this.timer = window.setInterval(() => this.go(1), 4500);
+    this.timer = window.setInterval(() => this.go(1), 5000);
   }
 
   stopAutoPlay() {
@@ -123,11 +134,5 @@ export class CarouselController {
   restartAutoPlay() {
     this.stopAutoPlay();
     this.startAutoPlay();
-  }
-
-  // Optional: Clean up if component is destroyed (though SPA usually just clears innerHTML)
-  destroy() {
-    this.stopAutoPlay();
-    // Remove listeners if necessary, but elements are usually garbage collected
   }
 }
