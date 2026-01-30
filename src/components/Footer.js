@@ -16,8 +16,8 @@ export const Footer = () => {
 
             <div style="width: 40px; height: 1px; background: var(--border-color); margin-top: 20px;"></div>
              
-             <p style="font-size: 0.75rem; color: var(--text-muted); max-width: 400px; text-align: center;">
-               Mantido pela comunidade. Construído para durar.
+             <p style="font-size: 0.95rem; color: var(--text-muted); max-width: 400px; text-align: center;">
+               Desenvolvido por <a href="https://italovdev.vercel.app/" target="_blank" rel="noopener noreferrer" style="color: var(--accent) !important;">ItaloDev</a>.
              </p>
 
           </div>

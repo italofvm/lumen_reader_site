@@ -95,11 +95,6 @@ export const Home = {
                 <h3 class="feature-title"><span>03.</span> FORMATOS</h3>
                 <p class="feature-desc">Suporte nativo para EPUB, PDF, TXT com parser inteligente de metadados.</p>
               </article>
-
-              <article class="feature-card" style="background: var(--bg-surface);">
-                 <h3 class="feature-title" style="color: var(--accent);"><span>//</span> OPEN SOURCE</h3>
-                 <p class="feature-desc">Código auditável e transparente. Construído pela comunidade para a comunidade.</p>
-              </article>
             </div>
           </div>
         </section>
